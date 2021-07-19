@@ -1,6 +1,6 @@
 {
   "name": "vue3-flowchart-builder",
-  "version": "0.1.0",
+  "version": "5.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -8,6 +8,20 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@jsplumb/core": "file:../../alternate-jsplumb/dist/core/jsplumb-core.tgz",
+    "@jsplumb/json-syntax-highlighter": "^1.0.4",
+    "@jsplumb/toolkit-demo-support": "^1.0.0",
+    "@jsplumb/util": "file:../../alternate-jsplumb/dist/util/jsplumb-util.tgz",
+    "@jsplumbtoolkit/browser-ui": "^5.0.0-RC1",
+    "@jsplumbtoolkit/browser-ui-plugin-drawing-tools": "^5.0.0-RC1",
+    "@jsplumbtoolkit/browser-ui-plugin-lasso": "^5.0.0-RC1",
+    "@jsplumbtoolkit/browser-ui-plugin-miniview": "^5.0.0-RC1",
+    "@jsplumbtoolkit/browser-ui-vue3": "file:../../alternate-toolkit/dist/browser-ui-vue3/jsplumbtoolkit-browser-ui-vue3.tgz",
+    "@jsplumbtoolkit/browser-ui-vue3-drop": "file:../../alternate-toolkit/dist/browser-ui-vue3-drop/jsplumbtoolkit-browser-ui-vue3-drop.tgz",
+    "@jsplumbtoolkit/connector-editors-orthogonal": "^5.0.0-RC1",
+    "@jsplumbtoolkit/dialogs": "^5.0.0-RC1",
+    "@jsplumbtoolkit/drop": "^5.0.0-RC1",
+    "@jsplumbtoolkit/layout-spring": "^5.0.0-RC1",
     "core-js": "^3.6.5",
     "vue": "^3.0.0"
   },
