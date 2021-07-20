@@ -201,23 +201,30 @@ function nodeFactory(type, data, callback)  {
         },
 
         mounted() {
-            console.log("mounted")
+
             toolkitComponent = this.$refs.toolkitComponent;
             toolkit = toolkitComponent.toolkit;
 
             dialogs = Dialogs.newInstance({
-                selector: ".dlg"
-            });
+                dialogs: {
+                    "dlgText":[
+                        '<input type="text" size="50" jtk-focus jtk-att="text" value="${text}" jtk-commit="true"/>',
+                        'Enter Text',
+                        true
 
-            // toolkit.addNode({
-            //     id:"1",
-            //     type:"start",
-            //     left:50,
-            //     top:50,
-            //     w:100,
-            //     h:100,
-            //     text:"Start"
-            // })
+                    ],
+                    "dlgConfirm":[
+                        '${msg}',
+                        'Please Confirm',
+                        true
+                    ],
+                    "dlgMessage":[
+                        '${msg}',
+                        "Message",
+                        false
+                    ]
+                }
+            });
         }
 
     }
