@@ -1,5 +1,6 @@
 <template>
     <div class="controls" ref="container">
+        <h1>hello</h1>
         <i class="fa fa-arrows selected-mode" mode="pan" title="Pan Mode" v-on:click="panMode()"></i>
         <i class="fa fa-pencil" mode="select" title="Select Mode" v-on:click="selectMode()"></i>
         <i class="fa fa-home" reset title="Zoom To Fit" v-on:click="zoomToFit()"></i>
@@ -11,9 +12,11 @@
 
 <script>
 
-    import { getSurface } from "@jsplumbtoolkit/browser-ui-vue3";
+    import { loadSurface } from "@jsplumbtoolkit/browser-ui-vue3";
     import { EVENT_CANVAS_CLICK } from "@jsplumbtoolkit/browser-ui"
     import { EVENT_UNDOREDO_UPDATE } from "@jsplumbtoolkit/core"
+
+    import { defineComponent } from "vue"
 
     let container;
     let surfaceId;
@@ -21,13 +24,13 @@
     // a wrapper around getSurface, which expects a callback, as the surface may or may not have been
     // initialised when calls are made to it.
     function _getSurface(cb) {
-        getSurface(surfaceId, cb)
+        loadSurface(surfaceId, cb)
     }
 
-    export default {
+    export default defineComponent({
         props:["surfaceId"],
         methods:{
-            panMode:() => {
+            panMode:function() {
                 _getSurface((s) => s.setMode("pan"))
             },
             selectMode:function() {
@@ -51,7 +54,7 @@
                 });
             }
         },
-        mounted:function() {
+        mounted() {
 
             surfaceId = this.surfaceId;
             container = this.$refs.container;
@@ -67,6 +70,6 @@
                 });
             });
         }
-    }
+    })
 
 </script>

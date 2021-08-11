@@ -2,6 +2,7 @@
   <div class="jtk-demo-main" id="jtk-demo-flowchart">
 
     <div id="canvas" class="jtk-demo-canvas">
+      <Controls surface-id="surface"></Controls>
       <Flowchart surface-id="surface"></Flowchart>
     </div>
 
@@ -34,12 +35,13 @@
 import { defineComponent } from 'vue';
 import Flowchart from './components/Flowchart.vue'
 import Palette from './components/Palette.vue'
+import Controls from './components/Controls.vue'
 import {uuid} from "@jsplumb/util";
 
 export default defineComponent({
   name: 'App',
   components: {
-    Flowchart, Palette
+    Flowchart, Palette, Controls
   },
   methods:{
     dataGenerator:(el:Element) => {
