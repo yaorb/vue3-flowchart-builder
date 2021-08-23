@@ -30,6 +30,9 @@
 
     import { defineComponent } from "vue";
 
+    //
+    // This call is required in order for the edge editor to register itself with the Toolkit.
+    //
     OrthogonalConnectorEditor.initialize();
 
     const TARGET = 'target';
@@ -159,17 +162,17 @@
                             }
                         }
                     ],
-                        events:{
+                    events:{
                         canvasClick:() => {
                             toolkit.clearSelection();
                             edgeEditor.stopEditing();
                         }
                     },
-                    consumeRightClick: false,
-                        dragOptions: {
+                    consumeRightClick: false,  // this is a dev setting - it just allows you to right-click and inspect. In production you might want to take this out (the default value is `true`)
+                    dragOptions: {
                         filter: ".jtk-draw-handle, .node-action, .node-action i"
                     },
-                    zoomToFit:true,
+                    zoomToFit:true
                 }
             }
         },

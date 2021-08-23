@@ -35,6 +35,10 @@ function showEdgeEditDialog(data:ObjectData, continueFunction:Dialogs.CommitFunc
     });
 }
 
+/**
+ * This object provides a few helper methods for other parts of the app, and is injected into the `BaseEditableNode` component, as well as `Flowchart`,
+ * the main component. `inject/provide` is a new capability that Vue 3 offers which Vue 2 does not have.
+ */
 export default {
 
     nodeFactory: (type: string, data: ObjectData, callback: Dialogs.CommitFunction, abort?: Dialogs.CancelFunction):void => {
