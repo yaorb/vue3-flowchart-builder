@@ -3,22 +3,22 @@ import { Node, ObjectData, JsPlumbToolkit, Edge, uuid } from "@jsplumbtoolkit/co
 
 const dialogs = Dialogs.newInstance({
     dialogs: {
-        "dlgText":[
-            '<input type="text" size="50" jtk-focus jtk-att="text" value="${text}" jtk-commit="true"/>',
-            'Enter Text',
-            true
+        "dlgText": {
+            template:'<input type="text" size="50" jtk-focus jtk-att="text" value="${text}" jtk-commit="true"/>',
+            title:'Enter Text',
+            cancelable:true
 
-        ],
-        "dlgConfirm":[
-            '${msg}',
-            'Please Confirm',
-            true
-        ],
-        "dlgMessage":[
-            '${msg}',
-            "Message",
-            false
-        ]
+        },
+        "dlgConfirm": {
+            template: '${msg}',
+            title: 'Please Confirm',
+            cancelable: true
+        },
+        "dlgMessage": {
+            template:'${msg}',
+            title:"Message",
+            cancelable:false
+        }
     }
 })
 
@@ -37,11 +37,11 @@ function showEdgeEditDialog(data:ObjectData, continueFunction:Dialogs.CommitFunc
 
 export default {
 
-    nodeFactory: (type: string, data: any, callback: Dialogs.CommitFunction, abort?: Dialogs.CancelFunction) => {
+    nodeFactory: (type: string, data: ObjectData, callback: Dialogs.CommitFunction, abort?: Dialogs.CancelFunction):void => {
         dialogs.show({
             id: 'dlgText',
             title: 'Enter ' + type + ' name:',
-            onOK: (d: any) => {
+            onOK: (d: Record<string, any>) => {
                 data.text = d.text;
                 // if the user entered a name...
                 if (data.text) {
@@ -60,18 +60,18 @@ export default {
         });
     },
 
-    editNode:(node:Node, commitFunction:Dialogs.CommitFunction) => {
+    editNode:(node:Node, commitFunction:Dialogs.CommitFunction):void => {
         dialogs.show({
             id: "dlgText",
             data: node.data,
-            title: "Edit " + node.data.type + " name",
+            title: `Edit ${node.data.type} name`,
             onOK: commitFunction
         });
     },
-    editEdge:(data:ObjectData, continueCallback:Dialogs.CommitFunction, abortCallback:Dialogs.CancelFunction) => {
+    editEdge:(data:ObjectData, continueCallback:Dialogs.CommitFunction, abortCallback:Dialogs.CancelFunction):void => {
         showEdgeEditDialog(data, continueCallback, abortCallback)
     },
-    maybeDelete:(n:Node, toolkit:JsPlumbToolkit) => {
+    maybeDelete:(n:Node, toolkit:JsPlumbToolkit):void => {
         dialogs.show({
             id:"dlgConfirm",
             data:{
@@ -80,11 +80,11 @@ export default {
             onOK:() => toolkit.removeNode(n)
         })
     },
-    confirmDeleteEdge:(e:Edge, confirm:Dialogs.CommitFunction) => {
+    confirmDeleteEdge:(e:Edge, confirm:Dialogs.CommitFunction):void => {
         dialogs.show({
             id: "dlgConfirm",
             data: {
-                msg: "Delete Edge"
+                msg: "Delete Edge?"
             },
             onOK: confirm
         });
