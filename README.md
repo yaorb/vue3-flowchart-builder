@@ -1,24 +1,3 @@
 # vue3-flowchart-builder
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This is a version of the Toolkit's Flowchart Builder demonstration that uses the Vue3 integration.
