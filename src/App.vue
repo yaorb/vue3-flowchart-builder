@@ -47,8 +47,8 @@ export default defineComponent({
     dataGenerator:(el:Element) => {
       return {
         type:el.getAttribute("data-node-type"),
-        w:120,
-        h:80,
+        w:el.getAttribute("data-width"),
+        h:el.getAttribute("data-height"),
         id:uuid()
       };
     }

@@ -172,7 +172,16 @@
                     dragOptions: {
                         filter: ".jtk-draw-handle, .node-action, .node-action i"
                     },
-                    zoomToFit:true
+                    zoomToFit:true,
+                    grid:{
+                        size:{
+                            w:20,
+                            h:20
+                        }
+                    },
+                    magnetize:{
+                        afterDrag:true
+                    }
                 }
             }
         },
