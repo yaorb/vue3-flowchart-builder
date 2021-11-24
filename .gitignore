@@ -2,6 +2,7 @@
 node_modules
 /dist
 
+#.npmrc
 
 # local env files
 .env.local
@@ -14,7 +15,7 @@ yarn-error.log*
 pnpm-debug.log*
 
 # Editor directories and files
-.idea
+.ide
 .vscode
 *.suo
 *.ntvs*
